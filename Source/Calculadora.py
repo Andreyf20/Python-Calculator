@@ -108,7 +108,7 @@ def hexa_a_dec(numero): # Func transforms a hexadecimal number into decimal
     except:
         messagebox.showinfo('Error', 'Input Error')
 
-# Interfaz
+# Graphical User Interface
 calculadora = Tk()
 calculadora.title('Calculadora')
 # calculadora.resizable(0, 0)
@@ -119,11 +119,10 @@ class Application(Frame):
         self.base = 10
         self.createWidgets()
 
-    '''Verifica cual operacion es la deseada'''
-    def calculo(self):
-        self.entrada = self.display.get()
-        self.lista = list(self.entrada)
-        for i in range(len(self.lista)):
+    def calculo(self): # Verifies the operation that is used
+        self.entrada = self.display.get() # Gets the input from the GUI
+        self.lista = list(self.entrada) # Makes a list of the input
+        for i in range(len(self.lista)): # Checks the base that is asked for
             if self.lista[i] == '+':
                 if self.base == 10:
                     self.calculo_suma_dec()
@@ -152,17 +151,15 @@ class Application(Frame):
                 elif self.base == 16:
                     self.calculo_mult_hexa()
 
-
-    '''REALIZA UNA SUMA EN BASE 10'''
-    def calculo_suma_dec(self):
+    def calculo_suma_dec(self): # Calculates every operation in base 10, also used for other bases
         try:
             self.result = eval(self.entrada)
             self.replaceText(self.result)
         except:
             messagebox.showinfo('Error', 'Error en el input')
 
-    '''OPERACIONES EN BASE 2'''
-    def calculo_suma_bin(self):
+    '''Binary operations'''
+    def calculo_suma_bin(self): # Sum of two binary numbers
         ver = 0
         if self.lista[0] == "-":
             ver = 1
@@ -198,7 +195,7 @@ class Application(Frame):
         # print(self.num1, self.num2, self.result)
         self.replaceText(self.result)
 
-    def calculo_resta_bin(self):
+    def calculo_resta_bin(self): # Subtraction of two binary numbers
         ver = 0
         if self.lista[0] == "-":
             ver = 1
@@ -230,7 +227,7 @@ class Application(Frame):
             self.result = "".join(listanum)
         self.replaceText(self.result)
 
-    def calculo_mult_bin(self):
+    def calculo_mult_bin(self): # Multiplication of two binary numbers
         ver = 0
         if self.lista[0] == '-':
             ver += 1
@@ -259,8 +256,8 @@ class Application(Frame):
             self.result = ''.join(listanum)
         self.replaceText(self.result)
 
-    '''OPERACIONES EN OCTAL'''
-    def calculo_suma_octal(self):
+    '''Octal operations'''
+    def calculo_suma_octal(self): # Sum of two octal numbers
         ver = 0
         if self.lista[0] == "-":
             ver = 1
@@ -293,7 +290,7 @@ class Application(Frame):
             print(self.result, listanum)
         self.replaceText(self.result)
 
-    def calculo_resta_octal(self):
+    def calculo_resta_octal(self):  # Subtraction of two octal numbers
         ver = 0
         if self.lista[0] == "-":
             ver = 1
@@ -325,7 +322,7 @@ class Application(Frame):
             self.result = "".join(listanum)
         self.replaceText(self.result)
 
-    def calculo_mult_octal(self):
+    def calculo_mult_octal(self):  # Multiplication of two octal numbers
         ver = 0
         if self.lista[0] == '-':
             ver += 1
@@ -355,7 +352,7 @@ class Application(Frame):
         self.replaceText(self.result)
 
     '''OPERACIONES EN HEXADECIMAL'''
-    def calculo_suma_hexa(self):
+    def calculo_suma_hexa(self): # Sum of two hexadecimal numbers
         ver = 0
         if self.lista[0] == "-":
             ver = 1
@@ -388,7 +385,7 @@ class Application(Frame):
             print(self.result, listanum)
         self.replaceText(self.result)
 
-    def calculo_resta_hexa(self):
+    def calculo_resta_hexa(self): # Subtraction of two hexadecimal numbers
         ver = 0
         if self.lista[0] == "-":
             ver = 1
@@ -420,7 +417,7 @@ class Application(Frame):
             self.result = "".join(listanum)
         self.replaceText(self.result)
 
-    def calculo_mult_hexa(self):
+    def calculo_mult_hexa(self): # Multiplication of two hexadecimal numbers
         ver = 0
         if self.lista[0] == '-':
             ver += 1
@@ -449,25 +446,21 @@ class Application(Frame):
             self.result = ''.join(listanum)
         self.replaceText(self.result)
 
-    '''CAMBIOS DE BASE'''
+    '''This four functions change the base to work on according to the user'''
     def base2(self):
         self.base = 2
-        # print(base)
 
     def base8(self):
         self.base = 8
-        # print(base)
 
     def base10(self):
         self.base = 10
-        # print(base)
 
     def base16(self):
         self.base = 16
-        # print(base)
 
-    '''CAMBIOS DE BASE DE UN SOLO NUMERO'''
-    def cambiar_la_base_del_display2(self):
+    '''Base change'''
+    def cambiar_la_base_del_display2(self): # If base two to x(base)
         entrada = self.display.get()
         if self.base == 10:
             self.result = dec_a_binario(int(entrada))
@@ -479,7 +472,7 @@ class Application(Frame):
             self.result = dec_a_binario(int(self.result))
         self.replaceText(self.result)
 
-    def cambiar_la_base_del_display8(self):
+    def cambiar_la_base_del_display8(self): # If base eight to x(base)
         entrada = self.display.get()
         if self.base == 10:
             self.result = dec_a_octal(int(entrada))
@@ -491,7 +484,7 @@ class Application(Frame):
             self.result = dec_a_octal(int(self.result))
         self.replaceText(self.result)
 
-    def cambiar_la_base_del_display10(self):
+    def cambiar_la_base_del_display10(self): # If base ten to x(base)
         entrada = self.display.get()
         if self.base == 2:
             self.result = binario_a_dec(list(entrada))
@@ -501,7 +494,7 @@ class Application(Frame):
             self.result = hexa_a_dec(list(entrada))
         self.replaceText(self.result)
 
-    def cambiar_la_base_del_display16(self):
+    def cambiar_la_base_del_display16(self): # If base sixteen to x(base)
         entrada = self.display.get()
         if self.base == 2:
             self.result = binario_a_dec(list(entrada))
@@ -513,12 +506,12 @@ class Application(Frame):
             self.result = dec_a_hexa(int(self.result))
         self.replaceText(self.result)
 
-    '''ESTO CAMBIA EL TEXTO EN CASO DE HABER EL CERO DE INICIO'''
+    '''This is the GUI input if the number 0 is there(It is by default)'''
     def replaceText(self, text):
         self.display.delete(0, END)
         self.display.insert(0, text)
 
-    '''AñADE AL DISPLAY EL BOTON QUE SE TOCA'''
+    '''Adds to the display the user input'''
     def appendToDisplay(self, text):
         self.entryText = self.display.get()
         self.textLength = len(self.entryText)
@@ -528,11 +521,11 @@ class Application(Frame):
         else:
             self.display.insert(self.textLength, text)
 
-    '''LIMPIA EL DISPLAY DE LA CALCULADORA'''
+    '''Clears the calculator display'''
     def clearText(self):
         self.replaceText('0')
 
-    '''TODOS LOS BOTONES'''
+    '''Every button in the calculator'''
     def createWidgets(self):
         self.display = Entry(self, relief = RAISED, justify = RIGHT, font = 100)
         self.display.insert(0, '0')
@@ -625,5 +618,5 @@ class Application(Frame):
         self.C16 = Button(self, font = 100, text = 'C16', borderwidth = 2, command = lambda: self.cambiar_la_base_del_display16())
         self.C16.grid(row = 4, column = 5, sticky='NWNESWSE')
 
-app = Application(calculadora).grid()
+app = Application(calculadora).grid() # Tkinter commands
 calculadora.mainloop()

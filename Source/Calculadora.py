@@ -6,7 +6,7 @@ octal = ['0', '1', '2', '3', '4', '5', '6', '7'];
 decimal = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 hexa = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
 
-def dec_a_binario(numero): # Func transforms a decimal number into binary
+def dec_a_binario(numero): # Func transforms a decimal number into binary / Receives a number from the calculate function
     try:
         Nuevo_n = [];
         while numero != 0:
@@ -74,7 +74,6 @@ def octal_a_decimal(numero): # Func transforms a octal number into decimal
     try:
         numero_final_dec = 0
         exp = 0
-        # numero = list(numero)
         for item in numero[::-1]:
             x = int(item) * (8**exp)
             exp += 1
@@ -111,7 +110,7 @@ def hexa_a_dec(numero): # Func transforms a hexadecimal number into decimal
 # Graphical User Interface
 calculadora = Tk()
 calculadora.title('Calculadora')
-# calculadora.resizable(0, 0)
+# calculadora.resizable(0, 0) Removes the resizable feature (disabled because it was actually annoying)
 
 class Application(Frame):
     def __init__(self, master, *args, **kwargs):
@@ -119,10 +118,10 @@ class Application(Frame):
         self.base = 10
         self.createWidgets()
 
-    def calculo(self): # Verifies the operation that is used
-        self.entrada = self.display.get() # Gets the input from the GUI
-        self.lista = list(self.entrada) # Makes a list of the input
-        for i in range(len(self.lista)): # Checks the base that is asked for
+    def calculo(self): # Verifies the operator that is used 
+        self.entrada = self.display.get()
+        self.lista = list(self.entrada)
+        for i in range(len(self.lista)): # Checks the operator used in the display
             if self.lista[i] == '+':
                 if self.base == 10:
                     self.calculo_suma_dec()

@@ -1,14 +1,14 @@
 from tkinter import *
 from tkinter import messagebox
-bases = [2,8,10,16]; # Bases that can be used
-binario = ['0', '1']; # Binary
-octal = ['0', '1', '2', '3', '4', '5', '6', '7'];
-decimal = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-hexa = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+bases = [2,8,10,16] # Bases that can be used
+binario = ['0', '1'] # Binary
+octal = ['0', '1', '2', '3', '4', '5', '6', '7']
+decimal = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+hexa = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
 
 def dec_a_binario(numero): # Func transforms a decimal number into binary / Receives a number from the calculate function
     try:
-        Nuevo_n = [];
+        Nuevo_n = []
         while numero != 0:
             remainder = numero % 2
             numero = numero // 2
@@ -21,7 +21,7 @@ def dec_a_binario(numero): # Func transforms a decimal number into binary / Rece
 
 def dec_a_octal(numero): # Func transforms a decimal number into octal
     try:
-        Nuevo_n = [];
+        Nuevo_n = []
         while numero != 0:
             remainder = numero % 8
             numero = numero // 8
@@ -34,7 +34,7 @@ def dec_a_octal(numero): # Func transforms a decimal number into octal
 
 def dec_a_hexa(numero): # Func transforms a decimal number into hexadecimal
     try:
-        Nuevo_n = [];
+        Nuevo_n = []
         while numero != 0:
             remainder = numero % 16
             numero = numero // 16
@@ -617,5 +617,5 @@ class Application(Frame):
         self.C16 = Button(self, font = 100, text = 'C16', borderwidth = 2, command = lambda: self.cambiar_la_base_del_display16())
         self.C16.grid(row = 4, column = 5, sticky='NWNESWSE')
 
-app = Application(calculadora).grid() # Tkinter commands
-calculadora.mainloop()
+app = Application(calculadora).grid() # Starting the app in grid mode
+calculadora.mainloop() # Start Tkinter GUI
